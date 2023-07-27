@@ -17,7 +17,7 @@ Multimodal language models have gained significant attention in recent years due
 
 ## Training 
 - For training the CNN architecture for Multilabel data classification (ECG). 
-  - Download the data from the website ![Kaggle](https://www.kaggle.com/datasets/khyeh0719/ptb-xl-dataset) and place it in ```time_series/data/```
+  - Download the data from the website [Kaggle](https://www.kaggle.com/datasets/khyeh0719/ptb-xl-dataset) and place it in ```time_series/data/```
   - Run ```python time_series/train.py```
 - For fine-tuning the LLama Model (GPU Required). 
   - Download the instruction tuned dataset and place it in ```llm/dataset/```
