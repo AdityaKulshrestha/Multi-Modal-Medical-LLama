@@ -1,4 +1,4 @@
-# Multimodal Medical LLama (MLLM)
+# Multimodal Medical LLama (MLLM) :stethoscope:
 A fine tuned LLama model that accepts multimodal data as input and gives response as text. The model accepts data in text, audio and time series data (ECG Data). 
 
 
