@@ -1,4 +1,4 @@
-# Multimodal Medical LLama (MLLM) :stethoscope:
+# Multimodal Medical LLama (MML) :stethoscope:
 A fine tuned LLama model that accepts multimodal data as input and gives response as text. The model accepts data in text, audio and time series data (ECG Data). 
 
 
@@ -39,6 +39,34 @@ The output will be displayed in the text box, allowing you to have a seamless co
 ## Demo 
 The projects support a Gradio based GUI.
 ![Gradio App](assets/gradio_interface.png)
+
+
+## Sample Responses 
+
+- **Q1** - Over the past few weeks, I've been experiencing a constant, dull pain under my ribs, and
+it's been accompanied by significant weight loss. Additionally, I noticed tiny black fragments in
+my urine after a recent ultrasound, but I haven't experienced any other symptoms. What could
+be causing these symptoms, especially the black particles in my urine?
+
+  **MM LLama** - Hi! Good evening. I am Chat Doctor answering your query. The black
+fragments in urine can be due to bleeding from the gastrointestinal tract. It can also be due to
+urinary tract infection. I would suggest that you get an abdominal ultrasound done. This will help
+rule out any pathology in the gastrointestinal tract. If this is normal then you should consult a
+physician and start on some antibiotics for urinary tract infection. Hope this helps. If you have
+any further queries feel free to ask. Take care. Chat Doctor. Thank you. Wish you good health.
+Kind regards.
+
+
+- **Q2**  - During a recent check-up, the doctor found some nodules in my body. Surprisingly, they
+don't cause any pain or discomfort, but I'm concerned about their presence. Can you please
+explain what these nodules are and whether they require any further evaluation or treatment?
+
+  **MM LLama** - Hi, Thanks for writing to Chat Doctor. I have gone through your query and
+can understand your concerns. These nodules could be due to different causes like thyroid
+nodules, enlarged lymph nodes etc. I would suggest you to consult a surgeon and get a fine
+needle aspiration cytology done. This will help in finding out the nature of the nodules and plan
+an appropriate management. Hope this helps. Let me know if there is any other questions. Take
+care. Wish you good health
 
 
 ## Disclaimer :warning:
