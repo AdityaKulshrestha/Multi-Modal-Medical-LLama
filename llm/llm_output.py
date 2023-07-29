@@ -4,25 +4,7 @@ from transformers import LlamaTokenizer, LlamaForCausalLM, GenerationConfig, Bit
 
 
 class LLama:
-    """
-    LLama class represents an AI language model called LLama, based on the LlamaForCausalLM model from the Transformers library.
-
-    Attributes:
-        basemodel (str): The name or path of the base model to use for LLama.
-        lora_weights (str): The name or path of the LORA (Lossy Audio Compression) model weights to use for LLama.
-
-    Methods:
-        response(query, input): Generates a text response based on the input query.
-        process_response(text): Processes the generated response and performs any additional post-processing.
-    """
     def __init__(self, base_model, lora_weights):
-        """
-        Initializes the LLama instance with the given base model and LORA model weights.
-
-        Args:
-            base_model (str): The name or path of the base model to use for LLama.
-            lora_weights (str): The name or path of the LORA model weights to use for LLama.
-        """
         self.config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_use_double_quant=True,
@@ -53,17 +35,14 @@ class LLama:
             remove_invalid_values=True
         )
 
-    def response(self, query, input):
-        """
-        Generates a text response based on the given query and input.
+    def response(self, query, input=None):
+        PROMPT = f"""If you are a doctor, please answer the medical questions based on the patient's description.
 
-        Args:
-            query (str): The input query or prompt for the model.
-            input (str): Additional input data required for generating the response.
+              ### Input:
+              {query}
 
-        Returns:
-            str: The generated text response.
-        """
+
+              ### Response: """
         inputs = self.tokenizer(
             PROMPT,
             return_tensors="pt",
@@ -79,7 +58,7 @@ class LLama:
         )
 
         response = generation_output.sequences[0]
-        return self.tokenizer.decode(response)
+        return self.process_response(self.tokenizer.decode(response))
 
     def process_response(self, text):
         """
@@ -92,9 +71,13 @@ class LLama:
             str: The extracted text.
         """
         start = text.find("Response:") + len("Response:")
-        end = text.find("Chat Doctor.")
-        return text[start:end].strip()
+        text = text[start:].strip()
+        first_chat_doctor = text.find("Chat Doctor.")
+        second_chat_doctor = text.find("Chat Doctor.", first_chat_doctor + len("Chat Doctor."))
 
+        if second_chat_doctor != -1:
+            result_text = text[:second_chat_doctor]
+        else:
+            result_text = text
 
-
-
+        return result_text

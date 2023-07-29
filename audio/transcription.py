@@ -1,7 +1,7 @@
 import whisper
 
 
-def transcribe_audio(audio_path, model_name="base"):
+def transcribe_audio(audio_path, model_name="base.en"):
     """
     Arguments
 
